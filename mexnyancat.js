@@ -10,8 +10,13 @@ const touchBarButton =   new TouchBarButton ({
   icon: 'images/mexinyan/mexinyan1.png',
 })
 
+const touchBarLabel = new TouchBarLabel({
+  label: ' ',
+  backgroundColor: '#000000',
+})
+
 const touchBar = new TouchBar({
-  items: [touchBarButton]
+  items: [touchBarLabel, touchBarButton]
 })
 
 let frame = 0;
@@ -24,6 +29,10 @@ const updateFrames = () => {
   }
   const nyanPath = `images/mexinyan/mexinyan${frame}.png`;
   touchBarButton.icon = nyanPath;
+  touchBarLabel.label = touchBarLabel.label + ' '
+  if (touchBarLabel.label.length === 180) {
+    touchBarLabel.label = ''
+  } 
 }
 
 const animateFrames = () => {
