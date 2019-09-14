@@ -1,15 +1,15 @@
 {
-  "name": "touch-bar-electron-example",
+  "name": "touchbar-electron-mexinyan",
   "version": "0.4.0",
   "scripts": {
     "start": "./node_modules/.bin/electron mexnyancat.js",
     "package": "electron-packager ./ mexnyancat --platform=mas --arch=x64 --overwrite"
   },
   "dependencies": {
-    "electron": "^2.0.4"
+    "electron": "^2.0.8"
   },
   "devDependencies": {
     "electron-packager": "^13.1.1",
-    "electron": "^2.0.4"
+    "electron": "^2.0.8"
   }
 }
