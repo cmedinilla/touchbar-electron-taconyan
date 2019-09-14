@@ -1,4 +1,4 @@
-# Touch bar Elextron Mexi Nyan
+# Touch bar Electron Mexi Nyan
 
 run Mexi Nyan:
 ```bash

@@ -1,10 +1,10 @@
 const {app, BrowserWindow, TouchBar} = require('electron')
 
-const {TouchBarLabel, TouchBarButton, TouchBarSpacer} = TouchBar
+const {TouchBarLabel, TouchBarButton} = TouchBar
 
 let window
 
-const touchBarButton =   new TouchBarButton ({
+const nyanTouchBarButton =  new TouchBarButton ({
   label:'',
   backgroundColor: '#000000',
   icon: 'images/mexinyan/mexinyan1.png',
@@ -16,7 +16,7 @@ const touchBarLabel = new TouchBarLabel({
 })
 
 const touchBar = new TouchBar({
-  items: [touchBarLabel, touchBarButton]
+  items: [touchBarLabel, nyanTouchBarButton]
 })
 
 let frame = 0;
@@ -28,7 +28,7 @@ const updateFrames = () => {
     frame += 1;
   }
   const nyanPath = `images/mexinyan/mexinyan${frame}.png`;
-  touchBarButton.icon = nyanPath;
+  nyanTouchBarButton.icon = nyanPath;
   touchBarLabel.label = touchBarLabel.label + ' '
   if (touchBarLabel.label.length === 180) {
     touchBarLabel.label = ''
