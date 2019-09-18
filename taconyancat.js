@@ -25,15 +25,15 @@ const touchBarLabel = new TouchBarLabel({
 })
 
 const stopMusicTouchBarButton = new TouchBarButton({
-  label: 'Stop',
-  backgroundColor: '#000000',
+  backgroundColor: '#BEBEBE',
+  icon: 'images/pauseIcon.png',
   click: () => {
     if (!music.killed) {
       music.kill()
-      stopMusicTouchBarButton.label = 'Play'
+      stopMusicTouchBarButton.icon = 'images/playIcon.png'
     } else {
       music = musicPlayer()
-      stopMusicTouchBarButton.label = 'Stop'
+      stopMusicTouchBarButton.icon = 'images/pauseIcon.png'
     }
   }
 })
