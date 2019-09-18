@@ -1,10 +1,17 @@
 const {app, BrowserWindow, TouchBar} = require('electron')
+const player = require('play-sound')(opts = {})
 
 const {TouchBarLabel, TouchBarButton} = TouchBar
 
 let window
 
-let music = true
+function musicPlayer() {
+  return player.play('music/mexinyan.mp3', {afplay: ['-v', 1 ]}, function(err){
+    if (err) throw err
+  })
+}
+
+let music = musicPlayer()
 
 const nyanTouchBarButton =  new TouchBarButton ({
   label:'',
@@ -21,13 +28,11 @@ const stopMusicTouchBarButton = new TouchBarButton({
   label: 'Stop',
   backgroundColor: '#000000',
   click: () => {
-    if (music) {
-      music = false
-      window.loadURL('about:blank')
+    if (!music.killed) {
+      music.kill()
       stopMusicTouchBarButton.label = 'Play'
     } else {
-      music = true
-      window.loadURL('http://www.nyan.cat/index.php?cat=mexinyan')
+      music = musicPlayer()
       stopMusicTouchBarButton.label = 'Stop'
     }
   }
@@ -62,16 +67,17 @@ app.once('ready', () => {
   window = new BrowserWindow({
     frame: false,
     titleBarStyle: 'hiddenInset',
-    width: 200,
-    height: 200,
+    width: 80,
+    height: 30,
     backgroundColor: '#0000'
   })
-  window.loadURL('http://www.nyan.cat/index.php?cat=mexinyan')
+  window.loadURL('about:blank')
   window.setTouchBar(touchBar)
   animateFrames()
 })
 
 
 app.on('window-all-closed', () => {
-  app.quit();
-});
+  music.kill()
+  app.quit()
+})
