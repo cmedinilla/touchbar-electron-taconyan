@@ -4,6 +4,8 @@ const {TouchBarLabel, TouchBarButton} = TouchBar
 
 let window
 
+let music = true
+
 const nyanTouchBarButton =  new TouchBarButton ({
   label:'',
   backgroundColor: '#000000',
@@ -15,8 +17,25 @@ const touchBarLabel = new TouchBarLabel({
   backgroundColor: '#000000',
 })
 
+const stopMusicTouchBarButton = new TouchBarButton({
+  label: 'Stop',
+  backgroundColor: '#000000',
+  click: () => {
+    if (music) {
+      music = false
+      window.loadURL('about:blank')
+      stopMusicTouchBarButton.label = 'Play'
+    } else {
+      music = true
+      window.loadURL('http://www.nyan.cat/index.php?cat=mexinyan')
+      stopMusicTouchBarButton.label = 'Stop'
+    }
+  }
+})
+
 const touchBar = new TouchBar({
-  items: [touchBarLabel, nyanTouchBarButton]
+  items: [touchBarLabel, nyanTouchBarButton],
+  escapeItem: stopMusicTouchBarButton,
 })
 
 let frame = 0;

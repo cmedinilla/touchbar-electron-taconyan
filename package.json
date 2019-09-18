@@ -5,6 +5,7 @@
     "start": "./node_modules/.bin/electron taconyancat.js",
     "package": "electron-packager ./ taconyancat --platform=mas --arch=x64 --overwrite"
   },
+  "main": "taconyancat.js",
   "dependencies": {
     "electron": "^2.0.8"
   },
