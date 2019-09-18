@@ -1,9 +1,9 @@
 {
-  "name": "touchbar-electron-mexinyan",
-  "version": "0.4.0",
+  "name": "touchbar-electron-taconyan",
+  "version": "0.8.0",
   "scripts": {
-    "start": "./node_modules/.bin/electron mexnyancat.js",
-    "package": "electron-packager ./ mexnyancat --platform=mas --arch=x64 --overwrite"
+    "start": "./node_modules/.bin/electron taconyancat.js",
+    "package": "electron-packager ./ taconyancat --platform=mas --arch=x64 --overwrite"
   },
   "dependencies": {
     "electron": "^2.0.8"
